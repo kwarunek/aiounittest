@@ -23,12 +23,6 @@ You can use pip:
 
     pip install aiounitest
 
-or directly from Github
-
-::
-
-    pip install git+https://github.com/kwarunek/aiounittest.git
-
 or manually
 
 ::
@@ -63,6 +57,46 @@ AsyncTestCase
         def test_sleep(self):
             ret = yield from add(5, 6)
             self.assertEqual(ret, 11)
+
+        # some regular test code
+        def test_something(self):
+            self.assertTrue(true)
+
+futurized
+----------
+
+Helper that wraps given object in the asyncio's `Future`. It can be used to mock coroutines. Wrap any kind of object with it and pass to `unittest.mock.Mock`'s `return_value` or `side_effect`. If the object is an `Exception` (or a sublcass), futurized will treat that accordingly and exception will be raise upon await.
+
+.. code-block:: python
+
+    # dummy_math.py
+
+    from asyncio import sleep
+
+    async def add(x, y):
+        await sleep(666)
+        return x + y
+
+.. code-block:: python
+
+    from aiounittest import futurized, AsyncTestCase
+    from unittest.mock import Mock, patch
+
+    import dummy_math
+
+    class MyTest(AsyncTestCase):
+
+        async def test_add(self):
+            mock_sleep = Mock(return_value=futurized('whatever'))
+            patch('dummy_math.sleep', mock_sleep).start()
+            ret = await dummy_math.add(5, 6)
+            self.assertEqual(ret, 11)
+
+        async def test_fail(self):
+            mock_sleep = Mock(return_value=Exception('whatever'))
+            patch('dummy_math.sleep', mock_sleep).start()
+            with self.assertRaises(Exception) as e:
+                await dummy_math.add(5, 6)
 
 
 License
