@@ -53,7 +53,7 @@ class AsyncTestCase(unittest.TestCase):
 
     def __getattribute__(self, name):
         attr = super().__getattribute__(name)
-        if name.startswith('test_'):  # and isinstance(attr, unction):
+        if name.startswith('test_') and callable(attr):
             return self._runTestMethod(attr)
         else:
             return attr
