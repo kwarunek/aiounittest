@@ -12,7 +12,7 @@ class MyAddTest(AsyncTestCase):
         self.assertEqual(ret, 11)
 
     async def test_fail(self):
-        mock_sleep = Mock(return_value=Exception('whatever'))
+        mock_sleep = Mock(return_value=futurized(Exception('whatever')))
         patch('dummy_math.sleep', mock_sleep).start()
         with self.assertRaises(Exception) as e:
             await dummy_math.add(5, 6)
