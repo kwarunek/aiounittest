@@ -8,7 +8,7 @@ except ImportError:
 setup(
     name='aiounittest',
     packages=['aiounittest'],
-    version='1.0.0',
+    version='1.0.1',
     author='Krzysztof Warunek',
     author_email='krzysztof@warunek.net',
     description='Test asyncio code more easily.',
