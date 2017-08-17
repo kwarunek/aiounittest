@@ -2,6 +2,7 @@ import asyncio
 import functools
 import unittest
 from unittest.case import _Outcome
+from .helpers import async_test
 
 
 class AsyncTestCase(unittest.TestCase):
@@ -27,34 +28,13 @@ class AsyncTestCase(unittest.TestCase):
 
     '''
 
-    def get_event_loop(self, cleanup=True):
-        loop = asyncio.get_event_loop()
-        if cleanup:
-            self.addCleanup(
-                functools.partial(self._clean_up_event_loop, loop)
-            )
-        return loop
-
-    def _clean_up_event_loop(self, loop):
-        loop.close()
-        self._recreate_event_loop()
-
-    def _recreate_event_loop(self):
-        ''' Creates brand new event loop
-
-        AsyncTestCase explicitly close the default loop to manage cleanups.
-        Here we create new one and make it default,
-        so the asyncio is operational after the test.
-
-        '''
-        loop = asyncio.new_event_loop()
-        asyncio.set_event_loop(loop)
-
+    def get_event_loop(self):
+        return None
 
     def __getattribute__(self, name):
         attr = super().__getattribute__(name)
         if name.startswith('test_') and callable(attr):
-            return self._runTestMethod(attr)
+            return async_test(attr, loop=self.get_event_loop())
         else:
             return attr
 

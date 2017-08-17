@@ -3,7 +3,7 @@ aiounittest
 
 |image0|_ |image1|_
 
-.. |image0| image:: https://api.travis-ci.org/kwarunek/aiounittest.png?branch=master 
+.. |image0| image:: https://api.travis-ci.org/kwarunek/aiounittest.png?branch=master
 .. _image0: https://travis-ci.org/kwarunek/aiounittest
 
 .. |image1| image:: https://badge.fury.io/py/aiounittest.svg
@@ -38,11 +38,21 @@ or manually
 Usage
 =====
 
+This library exposes following objects:
+
+1. :code:`AsyncTestCase` 
+2. :code:`futurized`
+3. :code:`async_test`
+
+Each of them can be used independently.
+
+
 AsyncTestCase
 -------------
 
 .. code-block:: python
 
+    import asyncio
     import aiounittest
 
 
@@ -76,6 +86,8 @@ futurized
 
 This helper wraps object in the asyncio's :code:`Future`. It can be used to mock coroutines. Decorate any kind of object with it and pass to :code:`unittest.mock.Mock`'s (:code:`MagicMock` as well) :code:`return_value` or :code:`side_effect`. If the given object is an :code:`Exception` (or its sublcass), :code:`futurized` will treat it accordingly and exception will be raised upon await.
 
+Some dummy module:
+
 .. code-block:: python
 
     # dummy_math.py
@@ -86,6 +98,9 @@ This helper wraps object in the asyncio's :code:`Future`. It can be used to mock
         await sleep(666)
         return x + y
 
+
+And the test with mocked :code:`asyncio.sleep`:
+
 .. code-block:: python
 
     from aiounittest import futurized, AsyncTestCase
@@ -94,7 +109,7 @@ This helper wraps object in the asyncio's :code:`Future`. It can be used to mock
     import dummy_math
 
     class MyTest(AsyncTestCase):
-    
+
         def tearDown(self):
             super().tearDown()
             patch.stopall()
@@ -110,6 +125,31 @@ This helper wraps object in the asyncio's :code:`Future`. It can be used to mock
             patch('dummy_math.sleep', mock_sleep).start()
             with self.assertRaises(Exception) as e:
                 await dummy_math.add(5, 6)
+
+____________
+
+async_test
+----------
+
+It's a decorator that let you to use the standard `unittest.TestCase` and run asynchronous tests, just decorate them.
+
+.. code-block:: python
+
+    import asyncio
+    import unittest
+    from aiounittest import async_test
+
+
+    async def add(x, y):
+        await asyncio.sleep(0.1)
+        return x + y
+
+    class MyTest(unittest.TestCase):
+
+        @async_test
+        async def test_async_add(self):
+            ret = await add(5, 6)
+            self.assertEqual(ret, 11)
 
 
 License
