@@ -12,7 +12,7 @@ aiounittest
 Info
 ====
 
-A helper library, that let you write test of the asynchornous code (:code:`asyncio`) transparently. This means you can test:
+This is a helper library to ease of your pain (and boilerplate), when writing a test of the asynchronous code (:code:`asyncio`). You can test:
 
 * synchronous code (same as the :code:`unittest.TestCase`)
 * asynchronous code, it supports syntax with :code:`async`/:code:`await` (Python 3.5+) and :code:`asyncio.coroutine`/:code:`yield from` (Python 3.4)
