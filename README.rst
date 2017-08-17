@@ -6,8 +6,8 @@ aiounittest
 .. |image0| image:: https://api.travis-ci.org/kwarunek/aiounittest.png?branch=master
 .. _image0: https://travis-ci.org/kwarunek/aiounittest
 
-info
-============
+Info
+====
 
 A helper library, that let you write test of the asynchornous code (:code:`asyncio`) transparently. This means you can test:
 
@@ -36,7 +36,7 @@ Usage
 =====
 
 AsyncTestCase
-----------
+-------------
 
 .. code-block:: python
 
