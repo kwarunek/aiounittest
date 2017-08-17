@@ -9,10 +9,10 @@ aiounittest
 info
 ============
 
-A helper library, that let you write test of the asynchornous code (`asyncio` only) transparently. This means you can test:
+A helper library, that let you write test of the asynchornous code (:samp:`asyncio`) transparently. This means you can test:
 
-	- synchronous code (same as the `unittest.TestCase`)
-	- asynchronous code, it supports syntax with `async`/`await` (Python 3.5+) and `asyncio.coroutine`/`yield from` (Python 3.4)
+	- synchronous code (same as the :samp:`unittest.TestCase`)
+	- asynchronous code, it supports syntax with :samp:`async`/:samp:`await` (Python 3.5+) and :samp:`asyncio.coroutine`/:samp:`yield from` (Python 3.4)
 
 
 Installation
@@ -66,7 +66,7 @@ AsyncTestCase
 futurized
 ----------
 
-Helper that wraps given object in the asyncio's `Future`. It can be used to mock coroutines. Wrap any kind of object with it and pass to `unittest.mock.Mock`'s `return_value` or `side_effect`. If the object is an `Exception` (or a sublcass), futurized will treat that accordingly and exception will be raise upon await.
+Helper that wraps given object in the asyncio's :samp:`Future`. It can be used to mock coroutines. Wrap any kind of object with it and pass to :samp:`unittest.mock.Mock`'s (MagicMock as well) :samp:`return_value` or :samp:`side_effect`. If the object is an :samp:`Exception` (or a sublcass), futurized will treat that accordingly and exception will be raise upon await.
 
 .. code-block:: python
 
