@@ -57,3 +57,21 @@ class TestAsyncCase(aiounittest.AsyncTestCase):
     def test_yield_async_add(self):
         ret = yield from async_add(1, 5)
         self.assertEqual(ret, -1)
+
+
+class TestAsyncCaseWithCustomLoop(aiounittest.AsyncTestCase):
+
+    def get_event_loop(self):
+        self.my_loop = asyncio.get_event_loop()
+        return self.my_loop
+
+    async def test_await_async_add(self):
+        ret = await async_add(1, 5)
+        self.assertEqual(ret, 6)
+        self.assertFalse(self.my_loop.is_closed())
+
+    @asyncio.coroutine
+    def test_yield_async_add(self):
+        ret = yield from async_add(1, 5)
+        self.assertEqual(ret, 6)
+        self.assertFalse(self.my_loop.is_closed())
