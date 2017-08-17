@@ -2,7 +2,7 @@ import aiounittest
 import asyncio
 import sys
 import time
-from unittest import skipIf
+from unittest import expectedFailure
 
 
 async def async_add(x, y, delay=0.1):
@@ -46,3 +46,14 @@ class TestAsyncCase(aiounittest.AsyncTestCase):
     async def test_await_async_fail(self):
         with self.assertRaises(Exception) as e:
             await async_one()
+
+    @expectedFailure
+    async def test_failure_await_async_add(self):
+        ret = await async_add(1, 5)
+        self.assertEqual(ret, -1)
+
+    @expectedFailure
+    @asyncio.coroutine
+    def test_yield_async_add(self):
+        ret = yield from async_add(1, 5)
+        self.assertEqual(ret, -1)

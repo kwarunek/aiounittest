@@ -37,18 +37,3 @@ class AsyncTestCase(unittest.TestCase):
             return async_test(attr, loop=self.get_event_loop())
         else:
             return attr
-
-    def _runTestMethod(self, testMethod):
-        @functools.wraps(testMethod)
-        def wrapped(*args, **kwargs):
-            loop = self.get_event_loop()
-            ret = testMethod(*args, **kwargs)
-            try:
-                future = asyncio.ensure_future(ret, loop=loop)
-            except TypeError:
-                # The test function is not awaitable.
-                # Using `try/except` rather than iscoroutine due to support of 3.4 
-                pass
-            else:
-                loop.run_until_complete(future)
-        return wrapped

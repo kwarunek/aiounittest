@@ -3,7 +3,7 @@ from unittest.mock import Mock, patch
 
 import dummy_math
 
-class MyTest(AsyncTestCase):
+class MyAddTest(AsyncTestCase):
 
     async def test_add(self):
         mock_sleep = Mock(return_value=futurized('whatever'))
