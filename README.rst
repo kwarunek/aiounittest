@@ -66,7 +66,7 @@ AsyncTestCase
 futurized
 ----------
 
-This helper wraps given object in the asyncio's :code:`Future`. It can be used to mock coroutines. Wrap any kind of object with it and pass to :code:`unittest.mock.Mock`'s (MagicMock as well) :code:`return_value` or :code:`side_effect`. If the object is an :code:`Exception` (or a sublcass), futurized will treat that accordingly and exception will be raise upon await.
+This helper wraps given object in the asyncio's :code:`Future`. It can be used to mock coroutines. Decorate any kind of object with it and pass to :code:`unittest.mock.Mock`'s (:code:`MagicMock` as well) :code:`return_value` or :code:`side_effect`. If the object is an :code:`Exception` (or its sublcass), futurized will treat that accordingly and exception will be raised upon await.
 
 .. code-block:: python
 
