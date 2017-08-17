@@ -152,12 +152,11 @@ It's a decorator that let you to use the standard `unittest.TestCase` and run as
             self.assertEqual(ret, 11)
 
 
-You can also pass the custom event loop with :code:`loop` argument. Note if the loop is provided, decorator won't try to close it.
+You can also pass the custom event loop with :code:`loop` argument. Note if the loop is provided, decorator won't close it.
 
 .. code-block:: python
 
     import asyncio
-    import unittest
     from aiounittest import async_test
 
 
@@ -172,6 +171,32 @@ You can also pass the custom event loop with :code:`loop` argument. Note if the 
     my_func()
     assert loop.is_closed() == False
 
+Above examples also shows a handy way to call async code in sync way. If the name is a problem, the same functionality provide :code:`aiounittest.helpers.run_sync`. For example:
+
+.. code-block:: python
+
+    import asyncio
+    from aiounittest.helpers import run_sync
+
+    # using decorator syntax
+
+    @run_sync
+    async def my_func1():
+        await asyncio.sleep(1)
+        return 'OK1'
+
+    ret = my_func1()
+    print(ret)
+
+    # using as a wrapper
+
+    async def my_func2():
+        await asyncio.sleep(1)
+        return 'OK2'
+
+    sync_my_func2 = run_sync(my_func2)
+    ret = sync_my_func2()
+    print(ret)
 
 License
 =======
