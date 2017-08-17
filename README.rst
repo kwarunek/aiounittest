@@ -14,14 +14,14 @@ Info
 
 A helper library, that let you write test of the asynchornous code (:code:`asyncio`) transparently. This means you can test:
 
- * synchronous code (same as the :code:`unittest.TestCase`)
- * asynchronous code, it supports syntax with :code:`async`/:code:`await` (Python 3.5+) and :code:`asyncio.coroutine`/:code:`yield from` (Python 3.4)
+* synchronous code (same as the :code:`unittest.TestCase`)
+* asynchronous code, it supports syntax with :code:`async`/:code:`await` (Python 3.5+) and :code:`asyncio.coroutine`/:code:`yield from` (Python 3.4)
 
 
 Installation
 ============
 
-You can use pip:
+Use pip:
 
 ::
 
@@ -40,9 +40,9 @@ Usage
 
 This library exposes following objects:
 
-1. :code:`AsyncTestCase` 
-2. :code:`futurized`
-3. :code:`async_test`
+1. AsyncTestCase_
+2. futurized_
+3. async_test_
 
 Each of them can be used independently.
 
