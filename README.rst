@@ -9,10 +9,10 @@ aiounittest
 info
 ============
 
-A helper library, that let you write test of the asynchornous code (:samp:`asyncio`) transparently. This means you can test:
+A helper library, that let you write test of the asynchornous code (:code:`asyncio`) transparently. This means you can test:
 
-	- synchronous code (same as the :samp:`unittest.TestCase`)
-	- asynchronous code, it supports syntax with :samp:`async`/:samp:`await` (Python 3.5+) and :samp:`asyncio.coroutine`/:samp:`yield from` (Python 3.4)
+ * synchronous code (same as the :code:`unittest.TestCase`)
+ * asynchronous code, it supports syntax with :code:`async`/:code:`await` (Python 3.5+) and :code:`asyncio.coroutine`/:code:`yield from` (Python 3.4)
 
 
 Installation
@@ -66,7 +66,7 @@ AsyncTestCase
 futurized
 ----------
 
-Helper that wraps given object in the asyncio's :samp:`Future`. It can be used to mock coroutines. Wrap any kind of object with it and pass to :samp:`unittest.mock.Mock`'s (MagicMock as well) :samp:`return_value` or :samp:`side_effect`. If the object is an :samp:`Exception` (or a sublcass), futurized will treat that accordingly and exception will be raise upon await.
+This helper wraps given object in the asyncio's :code:`Future`. It can be used to mock coroutines. Wrap any kind of object with it and pass to :code:`unittest.mock.Mock`'s (MagicMock as well) :code:`return_value` or :code:`side_effect`. If the object is an :code:`Exception` (or a sublcass), futurized will treat that accordingly and exception will be raise upon await.
 
 .. code-block:: python
 
