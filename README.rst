@@ -63,10 +63,15 @@ AsyncTestCase
         def test_something(self):
             self.assertTrue(true)
 
+
+By default :code:`AsyncTestCase` use the main event loop and cleans it ups on every test. If you want to change that behaiour  override the :code:`AsyncTestCase.get_event_loop` method.
+
+____________
+
 futurized
 ----------
 
-This helper wraps given object in the asyncio's :code:`Future`. It can be used to mock coroutines. Decorate any kind of object with it and pass to :code:`unittest.mock.Mock`'s (:code:`MagicMock` as well) :code:`return_value` or :code:`side_effect`. If the object is an :code:`Exception` (or its sublcass), futurized will treat that accordingly and exception will be raised upon await.
+This helper wraps object in the asyncio's :code:`Future`. It can be used to mock coroutines. Decorate any kind of object with it and pass to :code:`unittest.mock.Mock`'s (:code:`MagicMock` as well) :code:`return_value` or :code:`side_effect`. If the given object is an :code:`Exception` (or its sublcass), :code:`futurized` will treat it accordingly and exception will be raised upon await.
 
 .. code-block:: python
 
@@ -86,6 +91,10 @@ This helper wraps given object in the asyncio's :code:`Future`. It can be used t
     import dummy_math
 
     class MyTest(AsyncTestCase):
+    
+        def tearDown(self):
+            super().tearDown()
+            patch.stopall()
 
         async def test_add(self):
             mock_sleep = Mock(return_value=futurized('whatever'))
