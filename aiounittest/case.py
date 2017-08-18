@@ -1,7 +1,4 @@
-import asyncio
-import functools
 import unittest
-from unittest.case import _Outcome
 from .helpers import async_test
 
 
@@ -10,9 +7,12 @@ class AsyncTestCase(unittest.TestCase):
 
     This class can run:
         - test of synchronous code (same as the `unittest.TestCase`)
-        - test of asynchronous code, supports syntax with `async`/`await` (Python 3.5+) and `asyncio.coroutine`/`yield from` (Python 3.4)
+        - test of asynchronous code, supports syntax with `async`/`await` (Python 3.5+) and
+          `asyncio.coroutine`/`yield from` (Python 3.4)
 
     Simple usage:
+
+    .. code-block:: python
 
             import aiounittest
 
