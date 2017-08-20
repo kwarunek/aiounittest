@@ -1,0 +1,4 @@
+futurized
+=========
+
+.. autofunction:: aiounittest.futurized
