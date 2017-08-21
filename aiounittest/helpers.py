@@ -130,13 +130,8 @@ def run_sync(func=None, loop=None):
                 loop = get_brand_new_default_event_loop()
             try:
                 ret = f(*args, **kwargs)
-                try:
-                    future = asyncio.ensure_future(ret, loop=loop)
-                except TypeError:
-                    # Using `try/except` rather than iscoroutine due to support of 3.4
-                    pass
-                else:
-                    return loop.run_until_complete(future)
+                future = asyncio.ensure_future(ret, loop=loop)
+                return loop.run_until_complete(future)
             finally:
                 if use_default_event_loop:
                     # clean up
