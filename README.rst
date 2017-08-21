@@ -31,7 +31,7 @@ Use pip:
 Usage
 =====
 
-Is as simple as using :code:`unittest.TestCase`. Full docs at http://aiounittest.readthedocs.io.
+It's as simple as use of :code:`unittest.TestCase`. Full docs at http://aiounittest.readthedocs.io.
 
 .. code-block:: python
 
