@@ -9,11 +9,11 @@ def futurized(o):
     :return: awaitable that resolves to provided object
     :rtype: asyncio.Future
 
-    Anything passed to :code:`futurized` is wrapped with :code:`asyncio.Future`.
-    This makes it awaitable (can be run with :code:`await` or `yield from`) as
+    Anything passed to :code:`futurized` is wrapped in :code:`asyncio.Future`.
+    This makes it awaitable (can be run with :code:`await` or :code:`yield from`) as
     a result of await it returns the original object.
 
-    If provided object is a Exception (or its sublcass) then resolvin `Future` will raise it.
+    If provided object is a Exception (or its sublcass) then the `Future` will raise it on await.
 
     .. code-block:: python
 
@@ -25,7 +25,7 @@ def futurized(o):
         ret = await fut  # will raise the exception "dummy error"
 
 
-    The main goal is to use is with :code:`unittest.mock.Mock` (or :code:`MagicMock`) to
+    The main goal is to use it with :code:`unittest.mock.Mock` (or :code:`MagicMock`) to
     be able to mock awaitable functions (coroutines).
 
 
@@ -39,7 +39,7 @@ def futurized(o):
                 await sleep(666)
                 return x + y
 
-    You rather don't want to wait 666 seconds, got to mock that.
+    You rather don't want to wait 666 seconds, you've gotta mock that.
 
     .. code-block:: python
 
@@ -86,7 +86,7 @@ def run_sync(func=None, loop=None):
     **Note**: :code:`aiounittest.async_test` is an alias of :code:`aiounittest.helpers.run_sync`
 
     This function enables you to use it like, `pytest.mark.asyncio` (implemetation differs),
-    but could be used with :code:`unittest.TestCase` class
+    but it's compatible with :code:`unittest.TestCase` class
 
     .. code-block:: python
 
@@ -108,7 +108,7 @@ def run_sync(func=None, loop=None):
 
     .. note::
 
-        If the loop is provided, it  won't be closed. It's up to you.
+        If the loop is provided, it won't be closed. It's up to you.
 
     This function is also used internally by :code:`aiounittest.AsyncTestCase` to run coroutines.
 

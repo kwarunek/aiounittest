@@ -6,7 +6,7 @@ class AsyncTestCase(unittest.TestCase):
     ''' AsyncTestCase allows to test asynchoronus function.
 
 
-    The usage is the same as :code:`unittest.TestCase`. It's working with other test frameworks
+    The usage is the same as :code:`unittest.TestCase`. It works with other test frameworks
     and runners (eg. `pytest`, `nose`) as well.
 
     This class can run:
