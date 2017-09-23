@@ -25,7 +25,7 @@ Use pip:
 
 ::
 
-    pip install aiounitest
+    pip install aiounittest
 
 
 Usage
