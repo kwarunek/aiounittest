@@ -1,5 +1,5 @@
 from aiounittest import AsyncTestCase
-from aiounittest import AsyncMockIterator
+from aiounittest.mock import AsyncMockIterator
 from unittest.mock import Mock
 
 
