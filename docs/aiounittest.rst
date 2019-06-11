@@ -9,5 +9,6 @@ will help you to mock coroutines.
    :maxdepth: 2
 
    asynctestcase
+   asyncmockiterator
    async_test
    futurized

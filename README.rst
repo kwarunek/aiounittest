@@ -59,10 +59,11 @@ It's as simple as use of :code:`unittest.TestCase`. Full docs at http://aiounitt
         def test_something(self):
             self.assertTrue(true)
 
-Library exposes some other helpers like async_test_, futurized_ to mock coroutines.
+Library exposes some other helpers like async_test_, AsyncMockIterator_, futurized_ to mock coroutines.
 
 .. _futurized: http://aiounittest.readthedocs.io/en/latest/futurized.html
 .. _async_test: http://aiounittest.readthedocs.io/en/latest/async_test.html
+.. _AsyncMockIterator: http://aiounittest.readthedocs.io/en/latest/asyncmockiterator.html
 
 License
 =======
