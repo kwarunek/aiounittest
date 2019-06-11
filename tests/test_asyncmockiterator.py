@@ -1,5 +1,6 @@
-from aiounittest import futurized, AsyncTestCase, AsyncMockIterator
-from unittest.mock import Mock, patch
+from aiounittest import AsyncTestCase
+from aiounittest.mock import AsyncMockIterator
+from unittest.mock import Mock
 
 
 async def fetch_some_text(source):
@@ -22,4 +23,3 @@ class MyAsyncMockIteratorTest(AsyncTestCase):
         self.assertEqual(res, 'asdfqwerzxcv')
         mock_iter.assertFullyConsumed()
         mock_iter.assertIterCount(3)
-
