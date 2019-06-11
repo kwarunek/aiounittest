@@ -191,7 +191,7 @@ class AsyncMockIterator:
         self.__consumed = False
         self.__iter_count = 0
 
-    async def __aiter__(self, *args, **kwargs):
+    def __aiter__(self, *args, **kwargs):
         return self
 
     async def __anext__(self, *args, **kwargs):
