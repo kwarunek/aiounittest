@@ -1,2 +1,6 @@
 include README.rst
 include LICENSE
+include aiounittest/py.typed
+
+recursive-exclude * __pycache__
+recursive-exclude * *.py[co]
