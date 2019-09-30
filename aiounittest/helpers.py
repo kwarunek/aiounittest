@@ -74,7 +74,7 @@ def futurized(o):
 
 
 def run_sync(func=None, loop=None):
-    ''' Run synchonously the given function (coroutine)
+    ''' Runs synchonously given function (coroutine)
 
     :param callable func: function to run (mostly coroutine)
     :param ioloop loop: event loop to use to run `func`
@@ -85,8 +85,8 @@ def run_sync(func=None, loop=None):
 
     **Note**: :code:`aiounittest.async_test` is an alias of :code:`aiounittest.helpers.run_sync`
 
-    This function enables you to use it like, `pytest.mark.asyncio` (implemetation differs),
-    but it's compatible with :code:`unittest.TestCase` class
+    Function can be used like a `pytest.mark.asyncio` (implemetation differs),
+    but it's compatible with :code:`unittest.TestCase` class.
 
     .. code-block:: python
 

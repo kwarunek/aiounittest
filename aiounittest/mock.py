@@ -1,5 +1,5 @@
 class AsyncMockIterator:
-    ''' Allows to mock asynchronous for loops.
+    ''' Allows to mock asynchronous for-loops.
 
     .. note::
 
@@ -55,12 +55,12 @@ class AsyncMockIterator:
             raise StopAsyncIteration
 
     def assertFullyConsumed(self):
-        ''' Does `async for` reached the end of the giden sequence
+        ''' Whenever `async for` reached the end of the given sequence.
         '''
         assert self.__consumed, 'Iterator wasnt fully consumed'
 
     def assertIterCount(self, expected):
-        ''' Checks whenever number of a mock iteration matches expected.
+        ''' Checks whenever a number of a mock iteration matches expected.
 
         :param expected int: Expected number of iterations
 

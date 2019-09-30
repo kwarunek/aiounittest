@@ -12,12 +12,12 @@ aiounittest
 Info
 ====
 
-This is a helper library to ease of your pain (and boilerplate), when writing a test of the asynchronous code (:code:`asyncio`). You can test:
+The `aiounittest` is a helper library to ease of your pain (and boilerplate), when writing a test of the asynchronous code (:code:`asyncio`). You can test:
 
 * synchronous code (same as the :code:`unittest.TestCase`)
 * asynchronous code, it supports syntax with :code:`async`/:code:`await` (Python 3.5+) and :code:`asyncio.coroutine`/:code:`yield from` (Python 3.4)
 
- 
+
 Installation
 ============
 
@@ -27,7 +27,7 @@ Use pip:
 
     pip install aiounittest
 
- 
+
 Usage
 =====
 
@@ -59,11 +59,11 @@ It's as simple as use of :code:`unittest.TestCase`. Full docs at http://aiounitt
         def test_something(self):
             self.assertTrue(true)
 
-Library provide some additional tooling:
+Library provides some additional tooling:
 
 * async_test_,
-* AsyncMockIterator_ to mock object for `async for`,
-* futurized_ to mock coroutines.
+* AsyncMockIterator_ mocking for `async for`,
+* futurized_ mock for coroutines.
 
 .. _futurized: http://aiounittest.readthedocs.io/en/latest/futurized.html
 .. _async_test: http://aiounittest.readthedocs.io/en/latest/async_test.html

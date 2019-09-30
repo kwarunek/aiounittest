@@ -10,7 +10,7 @@ class AsyncTestCase(unittest.TestCase):
     The usage is the same as :code:`unittest.TestCase`. It works with other test frameworks
     and runners (eg. `pytest`, `nose`) as well.
 
-    This class can run:
+    AsyncTestCase can run:
         - test of synchronous code (:code:`unittest.TestCase`)
         - test of asynchronous code, supports syntax with
           :code:`async`/:code:`await` (Python 3.5+) and
@@ -54,7 +54,7 @@ class AsyncTestCase(unittest.TestCase):
     '''
 
     def get_event_loop(self):
-        ''' This method provide event loop for the test
+        ''' Method provides an event loop for the test
 
         It is called before each test, by default :code:`aiounittest.AsyncTestCase` creates the brand new event
         loop everytime. After completion, the loop is closed and then recreated, set as default,
@@ -62,8 +62,8 @@ class AsyncTestCase(unittest.TestCase):
 
         .. note::
 
-            This is the most common and the recommended way. But, if for some reasons you want to provide
-            your own event loop just override it. Note that :code:`AsyncTestCase` won't close such a loop
+            In the most common cases you don't have to bother about this method, the default implementation is a receommended one.
+            But if, for some reasons, you want to provide your own event loop just override it. Note that :code:`AsyncTestCase` won't close such a loop.
 
         .. code-block:: python
 
