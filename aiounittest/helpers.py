@@ -114,9 +114,13 @@ def run_sync(func=None, loop=None):
 
     '''
     def get_brand_new_default_event_loop():
-        old_loop = asyncio.get_event_loop()
-        if not old_loop.is_closed():
-            old_loop.close()
+        try:
+            old_loop = asyncio.get_event_loop()
+            if not old_loop.is_closed():
+                old_loop.close()
+        except RuntimeError:
+            # no default event loop, ignore exception
+            pass
         _loop = asyncio.new_event_loop()
         asyncio.set_event_loop(_loop)
         return _loop
