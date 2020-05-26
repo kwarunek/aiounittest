@@ -1,4 +1,5 @@
 import asyncio
+import types
 import unittest
 from .helpers import async_test
 
@@ -77,9 +78,22 @@ class AsyncTestCase(unittest.TestCase):
         '''
         return None
 
+    class WrapMethodClass:
+        def __init__(self, func):
+            self.func = func
+
+        def wrap_to_method(self, *args, **kwargs):
+            return self.func(*args, **kwargs)
+
     def __getattribute__(self, name):
         attr = super().__getattribute__(name)
         if name.startswith('test_') and asyncio.iscoroutinefunction(attr):
-            return async_test(attr, loop=self.get_event_loop())
+            ret = async_test(attr, loop=self.get_event_loop())
+            if isinstance(attr, types.MethodType):
+                # Because unittest.loaded can do isinstance(ret, types.MethodType)
+                # we have to return an MethodType object
+                ret = self.WrapMethodClass(ret).wrap_to_method
+            setattr(self, name, ret)
+            return ret
         else:
             return attr
