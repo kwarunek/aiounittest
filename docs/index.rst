@@ -6,6 +6,9 @@
 aiounittest's documentation!
 ============================
 
+In the Python 3.8 (`release note <https://docs.python.org/3/whatsnew/3.8.html#unittest>`_) and newer consider to use the `unittest.IsolatedAsyncioTestCase <https://docs.python.org/3/library/unittest.html#unittest.IsolatedAsyncioTestCase>`_. Builtin :code:`unittest` module is now asyncio-featured.
+
+
 .. toctree::
    :maxdepth: 2
 
