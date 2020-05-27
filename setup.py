@@ -8,7 +8,7 @@ except ImportError:
 setup(
     name='aiounittest',
     packages=['aiounittest'],
-    version='1.3.1',
+    version='1.4.0',
     author='Krzysztof Warunek',
     author_email='krzysztof@warunek.net',
     description='Test asyncio code more easily.',
@@ -18,6 +18,7 @@ setup(
     long_description=open('README.rst').read(),
     tests_require=['nose', 'coverage'],
     package_data={'aiounittest': ['py.typed']},
+    install_requires=['wrapt'],
     license="MIT",
     classifiers=[
         'License :: OSI Approved :: MIT License',

@@ -1,5 +1,6 @@
 import asyncio
 import functools
+import wrapt
 
 
 def futurized(o):
@@ -125,26 +126,23 @@ def run_sync(func=None, loop=None):
         asyncio.set_event_loop(_loop)
         return _loop
 
-    def decorator(f):
-        @functools.wraps(f)
-        def wrapper(*args, **kwargs):
-            nonlocal loop
-            use_default_event_loop = loop is None
+    @wrapt.decorator
+    def decorator(wrapped, instance, args, kwargs):
+        nonlocal loop
+        use_default_event_loop = loop is None
+        if use_default_event_loop:
+            loop = get_brand_new_default_event_loop()
+        try:
+            ret = wrapped(*args, **kwargs)
+            future = asyncio.ensure_future(ret, loop=loop)
+            return loop.run_until_complete(future)
+        finally:
             if use_default_event_loop:
-                loop = get_brand_new_default_event_loop()
-            try:
-                ret = f(*args, **kwargs)
-                future = asyncio.ensure_future(ret, loop=loop)
-                return loop.run_until_complete(future)
-            finally:
-                if use_default_event_loop:
-                    # clean up
-                    loop.close()
-                    del loop
-                    # again set a new (unstopped) event loop
-                    get_brand_new_default_event_loop()
-
-        return wrapper
+                # clean up
+                loop.close()
+                del loop
+                # again set a new (unstopped) event loop
+                get_brand_new_default_event_loop()
 
     if func is None:
         return decorator
