@@ -1,6 +1,12 @@
 What? Why? Next?
 ================
 
+
+Why Not?
+--------
+
+In the Python 3.8 and above (https://docs.python.org/3/whatsnew/3.8.html#unittest) consider to use the `unittest.IsolatedAsyncioTestCase` (https://docs.python.org/3/library/unittest.html#unittest.IsolatedAsyncioTestCase).
+
 What?
 -----
 
