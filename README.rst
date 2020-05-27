@@ -18,7 +18,7 @@ The `aiounittest` is a helper library to ease of your pain (and boilerplate), wh
 * asynchronous code, it supports syntax with :code:`async`/:code:`await` (Python 3.5+) and :code:`asyncio.coroutine`/:code:`yield from` (Python 3.4)
 
 
-In Python 3.8 (https://docs.python.org/3/whatsnew/3.8.html#unittest) consider to use `unittest.IsolatedAsyncioTestCase` (https://docs.python.org/3/library/unittest.html#unittest.IsolatedAsyncioTestCase).
+In the Python 3.8 and above (https://docs.python.org/3/whatsnew/3.8.html#unittest) consider to use the `unittest.IsolatedAsyncioTestCase` (https://docs.python.org/3/library/unittest.html#unittest.IsolatedAsyncioTestCase).
 
 
 Installation
