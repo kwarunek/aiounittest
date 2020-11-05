@@ -3,8 +3,8 @@ aiounittest
 
 |image0|_ |image1|_
 
-.. |image0| image:: https://api.travis-ci.org/kwarunek/aiounittest.png?branch=master
-.. _image0: https://travis-ci.org/kwarunek/aiounittest
+.. |image0| image:: https://api.travis-ci.com/kwarunek/aiounittest.svg?branch=master
+.. _image0: https://travis-ci.com/kwarunek/aiounittest
 
 .. |image1| image:: https://badge.fury.io/py/aiounittest.svg
 .. _image1: https://badge.fury.io/py/aiounittest
