@@ -60,7 +60,7 @@ It's as simple as use of :code:`unittest.TestCase`. Full docs at http://aiounitt
 
         # some regular test code
         def test_something(self):
-            self.assertTrue(true)
+            self.assertTrue(True)
 
 Library provides some additional tooling:
 
