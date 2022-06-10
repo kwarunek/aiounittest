@@ -33,6 +33,9 @@ class TestAsyncCase(aiounittest.AsyncTestCase):
         loop.close()
         self.assertEqual(ret, 6)
 
+        # Set a new event loop, since we closed the old one
+        asyncio.set_event_loop(asyncio.new_event_loop())
+
     async def test_await_async_add(self):
         ret = await async_add(1, 5)
         self.assertEqual(ret, 6)
