@@ -10,5 +10,6 @@ matrix:
       sudo: true
 # command to install dependencies
 install:
+  - "pip install -U importlib_metadata"
   - "python setup.py install"
 script: nosetests
