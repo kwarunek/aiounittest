@@ -1,6 +1,7 @@
 import aiounittest
 import asyncio
 import time
+import sys
 from unittest import expectedFailure
 
 
@@ -37,10 +38,11 @@ class TestAsyncCase(aiounittest.AsyncTestCase):
         ret = await async_add(1, 5)
         self.assertEqual(ret, 6)
 
-    @asyncio.coroutine
-    def test_yield_async_add(self):
-        ret = yield from async_add(1, 5)
-        self.assertEqual(ret, 6)
+    if sys.version_info < (3, 11):
+        @asyncio.coroutine
+        def test_yield_async_add(self):
+            ret = yield from async_add(1, 5)
+            self.assertEqual(ret, 6)
 
     async def test_await_async_fail(self):
         with self.assertRaises(Exception) as e:
@@ -51,8 +53,9 @@ class TestAsyncCase(aiounittest.AsyncTestCase):
         ret = await async_add(1, 5)
         self.assertEqual(ret, -1)
 
-    @expectedFailure
-    @asyncio.coroutine
-    def test_yield_async_add(self):
-        ret = yield from async_add(1, 5)
-        self.assertEqual(ret, -1)
+    if sys.version_info < (3, 11):
+        @expectedFailure
+        @asyncio.coroutine
+        def test_yield_async_add(self):
+            ret = yield from async_add(1, 5)
+            self.assertEqual(ret, -1)

@@ -1,6 +1,7 @@
 import aiounittest
 import asyncio
 import time
+import sys
 from unittest import expectedFailure
 
 
@@ -34,8 +35,9 @@ class TestAsyncCaseWithCustomLoop(aiounittest.AsyncTestCase):
         self.assertEqual(ret, 6)
         self.assertFalse(self.my_loop.is_closed())
 
-    @asyncio.coroutine
-    def test_yield_async_add(self):
-        ret = yield from async_add(1, 5)
-        self.assertEqual(ret, 6)
-        self.assertFalse(self.my_loop.is_closed())
+    if sys.version_info < (3, 11):
+        @asyncio.coroutine
+        def test_yield_async_add(self):
+            ret = yield from async_add(1, 5)
+            self.assertEqual(ret, 6)
+            self.assertFalse(self.my_loop.is_closed())
