@@ -1,0 +1,8 @@
+# pyproject.toml
+[tool.pytest.ini_options]
+filterwarnings = [
+    "ignore::DeprecationWarning:.*test_asynctestcase.*:30",  # asyncio.get_event_loop
+    "ignore::DeprecationWarning:.*test_asynctestcase.*:39",  # @asyncio.coroutine
+    "ignore::DeprecationWarning:.*test_asynctestcase.*:45",  # @asyncio.coroutine
+    "ignore::DeprecationWarning:.*test_asynctestcase.*:60",  # @asyncio.coroutine
+]
