@@ -16,9 +16,8 @@ setup(
     keywords='asyncio, async, unittest, coroutine',
     url='https://github.com/kwarunek/aiounittest',
     long_description=open('README.rst').read(),
-    tests_require=['nose', 'coverage'],
     package_data={'aiounittest': ['py.typed']},
-    install_requires=['wrapt'],
+    install_requires=open('requirements.txt').read().splitlines(),
     license="MIT",
     classifiers=[
         'License :: OSI Approved :: MIT License',
