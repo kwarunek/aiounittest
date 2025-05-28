@@ -27,7 +27,7 @@ async def async_nested_exc():
 class TestAsyncCaseWithCustomLoop(aiounittest.AsyncTestCase):
 
     def get_event_loop(self):
-        self.my_loop = asyncio.get_event_loop()
+        self.my_loop = asyncio.new_event_loop()
         return self.my_loop
 
     async def test_await_async_add(self):
