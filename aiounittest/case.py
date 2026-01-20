@@ -70,7 +70,7 @@ class AsyncTestCase(unittest.TestCase):
             class MyTest(aiounittest.AsyncTestCase):
 
                 def get_event_loop(self):
-                    self.my_loop = asyncio.get_event_loop()
+                    self.my_loop = asyncio.new_event_loop()
                     return self.my_loop
 
 
