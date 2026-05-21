@@ -1,4 +1,5 @@
 import asyncio
+import inspect
 import unittest
 from .helpers import async_test
 
@@ -79,7 +80,7 @@ class AsyncTestCase(unittest.TestCase):
 
     def __getattribute__(self, name):
         attr = super().__getattribute__(name)
-        if name.startswith('test_') and asyncio.iscoroutinefunction(attr):
+        if name.startswith('test_') and inspect.iscoroutinefunction(attr):
             return async_test(attr, loop=self.get_event_loop())
         else:
             return attr
