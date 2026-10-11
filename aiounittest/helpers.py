@@ -140,7 +140,7 @@ def run_sync(func=None, loop=None):
             if use_default_event_loop:
                 # clean up
                 loop.close()
-                del loop
+                loop = None
                 # again set a new (unstopped) event loop
                 get_brand_new_default_event_loop()
 
